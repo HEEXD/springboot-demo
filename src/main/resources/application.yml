@@ -1,0 +1,45 @@
+spring:
+  # DB Configuration
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    tomcat:
+      connection-properties: druid.stat.mergeSql=true
+
+  # freemarker
+  freemarker:
+    cache: false
+    request-context-attribute: request
+    template-loader-path: classpath:/templates
+    prefix: /view/
+    suffix: .ftl
+
+  # thymeleaf
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/view/
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML5
+    servlet:
+      content-type: text/html
+
+# mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  check-config-location: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /springbootdemo
+
+# pageHelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
