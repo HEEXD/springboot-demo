@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8"/>
     <title>springboot-freeMarker demo</title>
+    <link rel="stylesheet" type="text/css" href="/css/myTable.css" />
 </head>
 <body>
-<h1>freeMarker demo</h1>
-<table>
+<h1 style="text-align:center">freeMarker demo</h1>
+<table class="myTable">
     <tr>
         <th>序号</th>
         <th>用户名</th>
