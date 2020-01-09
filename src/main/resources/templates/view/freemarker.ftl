@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="en">
+<#assign ctx=springMacroRequestContext.contextPath />
 <head>
     <meta charset="UTF-8"/>
     <title>springboot-freeMarker demo</title>
-    <link rel="stylesheet" type="text/css" href="/css/myTable.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/myTable.css" />
 </head>
 <body>
 <h1 style="text-align:center">freeMarker demo</h1>

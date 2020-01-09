@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>springboot-thymeleaf demo</title>
-    <link rel="stylesheet" type="text/css" href="/css/myTable.css" />
+    <link rel="stylesheet" type="text/css" th:href="${#httpServletRequest.getContextPath()+'/css/myTable.css'}" />
 </head>
 
 <body>
