@@ -17,4 +17,6 @@ public interface UserService {
     void updateUserById(User user);
 
     void deleteById(Long id);
+
+    List<User> getByNameAndPwd(User user);
 }

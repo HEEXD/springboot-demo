@@ -51,5 +51,10 @@ public class UserServiceImpl implements UserService {
         userDao.deleteById(id);
     }
 
+    @Override
+    public List<User> getByNameAndPwd(User user) {
+        return userDao.getByNameAndPwd(user);
+    }
+
 
 }

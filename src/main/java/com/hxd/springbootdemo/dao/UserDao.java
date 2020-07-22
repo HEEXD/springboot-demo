@@ -20,4 +20,6 @@ public interface UserDao {
     void updateUserById(User user);
 
     void deleteById(@Param("id") Long id);
+
+    List<User> getByNameAndPwd(User user);
 }

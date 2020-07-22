@@ -2,9 +2,9 @@ spring:
   # DB Configuration
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test
+    url: jdbc:mysql://47.101.183.56:3307/test
     username: root
-    password: root
+    password: 123456
     # druid
     druid:
       initial-size: 5

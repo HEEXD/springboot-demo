@@ -1,11 +1,15 @@
 package com.hxd.springbootdemo.controller;
 
+import com.hxd.springbootdemo.commons.entity.CommonResult;
 import com.hxd.springbootdemo.domain.User;
 import com.hxd.springbootdemo.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,6 +53,15 @@ public class RestUserController {
         userService.deleteById(id);
         msg.put("提示信息", "删除成功");
         return msg;
+    }
+
+    @PostMapping("login")
+    public CommonResult login(@RequestBody User user) {
+        List<User> list = userService.getByNameAndPwd(user);
+        if (list.size() == 0) {
+            return new CommonResult(HttpStatus.OK.value(), "账号或密码错误").withDetails("flag", "failure");
+        }
+        return new CommonResult(HttpStatus.OK.value(), "登录成功").withDetails("flag", "success");
     }
 
 }

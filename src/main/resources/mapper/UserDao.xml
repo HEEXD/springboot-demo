@@ -18,4 +18,9 @@
     <delete id="deleteById" parameterType="long">
         DELETE FROM USER WHERE id = #{id}
     </delete>
+
+    <select id="getByNameAndPwd" resultType="com.hxd.springbootdemo.domain.User">
+        SELECT * FROM user
+        WHERE name = #{name} and pwd = #{pwd}
+    </select>
 </mapper>
