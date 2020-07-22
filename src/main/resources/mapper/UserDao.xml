@@ -23,4 +23,16 @@
         SELECT * FROM user
         WHERE name = #{name} and pwd = #{pwd}
     </select>
+
+    <resultMap id="resultMap" type="java.util.Map" >
+        <result column="name" property="key" jdbcType="VARCHAR" />
+        <result column="pwd" property="value" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="getMap" resultMap="resultMap">
+    SELECT
+        `name`,pwd
+    FROM
+        user
+  </select>
 </mapper>

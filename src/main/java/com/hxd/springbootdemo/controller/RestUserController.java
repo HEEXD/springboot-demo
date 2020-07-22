@@ -1,8 +1,11 @@
 package com.hxd.springbootdemo.controller;
 
 import com.hxd.springbootdemo.commons.entity.CommonResult;
+import com.hxd.springbootdemo.commons.entity.MapResultHandler;
 import com.hxd.springbootdemo.domain.User;
 import com.hxd.springbootdemo.service.UserService;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +17,7 @@ import java.util.Map;
 
 /**
  * @Auther: hexudong
- * @Description:测试restful风格api
+ * @Description:restful风格api
  */
 @RestController
 @RequestMapping(value = "users")
@@ -22,6 +25,9 @@ public class RestUserController {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    SqlSessionFactory sqlSessionFactory;
 
     private static Map<String, Object> msg = new HashMap<>();
 
@@ -62,6 +68,19 @@ public class RestUserController {
             return new CommonResult(HttpStatus.OK.value(), "账号或密码错误").withDetails("flag", "failure");
         }
         return new CommonResult(HttpStatus.OK.value(), "登录成功").withDetails("flag", "success");
+    }
+
+    /**
+     * 测试 MyBatis 返回 Map，查询字段两列分别作为 key 和 value
+     */
+    @GetMapping("getMap")
+    public CommonResult getMap() {
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        MapResultHandler handler = new MapResultHandler();
+        sqlSession.select("com.hxd.springbootdemo.dao.UserDao.getMap", handler);
+        Map<String, String> map = handler.getMappedResults();
+        sqlSession.close();
+        return new CommonResult(HttpStatus.OK.value(), "").withDetails("data", map);
     }
 
 }
