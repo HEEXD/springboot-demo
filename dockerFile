@@ -1,0 +1,7 @@
+FROM 99taxis/mini-java8
+
+ADD target/springboot-demo.jar springboot-demo.jar
+
+EXPOSE 10000
+
+ENTRYPOINT ["java","-jar","springboot-demo.jar"]

@@ -17,8 +17,8 @@
     <#list list as user>
         <tr>
             <td>${user.id}</td>
-            <td>${user.username}</td>
-            <td>${user.age}</td>
+            <td>${user.name}</td>
+            <td>${user.pwd}</td>
         </tr>
     </#list>
 </table>
