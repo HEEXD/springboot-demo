@@ -63,7 +63,7 @@ public class UserController {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime today = LocalDateTime.of(LocalDate.now(), LocalTime.of(18, 30));
         Duration between = Duration.between(now, today);
-        model.addAttribute("hours", between.toHours() + "小时");
+        model.addAttribute("hours", between.toMinutes() / 60 + "小时" + between.toMinutes() % 60 + "分钟");
         model.addAttribute("minutes", between.toMinutes() + "分钟");
         model.addAttribute("seconds", between.toMillis() / 1000 + "秒");
         model.addAttribute("millis", between.toMillis() + "毫秒");
