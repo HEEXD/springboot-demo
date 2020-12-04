@@ -42,7 +42,7 @@ mybatis:
 server:
   port: 10000
   servlet:
-    context-path: /demo
+    context-path: /springbootDemo
 
 # pageHelper
 pagehelper:

@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 
@@ -52,6 +56,18 @@ public class UserController {
         List<User> list = userService.queryAll();
         model.addAttribute("list", list);
         return "thymeleaf";
+    }
+
+    @RequestMapping("retreat")
+    public String retreat(Model model) {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime today = LocalDateTime.of(LocalDate.now(), LocalTime.of(18, 30));
+        Duration between = Duration.between(now, today);
+        model.addAttribute("hours", between.toHours() + "小时");
+        model.addAttribute("minutes", between.toMinutes() + "分钟");
+        model.addAttribute("seconds", between.toMillis() / 1000 + "秒");
+        model.addAttribute("millis", between.toMillis() + "毫秒");
+        return "retreat";
     }
 
 }

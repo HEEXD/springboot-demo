@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>撤！</title>
+    <link rel="stylesheet" type="text/css" th:href="${#httpServletRequest.getContextPath()+'/css/retreat.css'}"/>
+</head>
+
+<body style="text-align:center">
+<h1>没有撤退可言！</h1>
+    <h2 th:text="${hours}"></h2>
+    <h2 th:text="${minutes}"></h2>
+    <h2 th:text="${seconds}"></h2>
+    <h2 th:text="${millis}"></h2>
+</body>
+</html>
