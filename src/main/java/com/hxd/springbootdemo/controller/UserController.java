@@ -61,8 +61,8 @@ public class UserController {
     @RequestMapping("retreat")
     public String retreat(Model model) {
         LocalDateTime now = LocalDateTime.now();
-        LocalDateTime today = LocalDateTime.of(LocalDate.now(), LocalTime.of(18, 30));
-        Duration between = Duration.between(now, today);
+        LocalDateTime retreatDateTime = LocalDateTime.of(LocalDate.now(), LocalTime.of(18, 30));
+        Duration between = Duration.between(now, retreatDateTime);
         model.addAttribute("hours", between.toMinutes() / 60 + "小时" + between.toMinutes() % 60 + "分钟");
         model.addAttribute("minutes", between.toMinutes() + "分钟");
         model.addAttribute("seconds", between.toMillis() / 1000 + "秒");
