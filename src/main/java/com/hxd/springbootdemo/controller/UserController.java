@@ -70,4 +70,14 @@ public class UserController {
         return "retreat";
     }
 
+    @RequestMapping("worker")
+    public String worker() {
+        return "worker";
+    }
+
+    @RequestMapping("laborer")
+    public String laborer() {
+        return "laborer";
+    }
+
 }

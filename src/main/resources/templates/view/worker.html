@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打工人</title>
+</head>
+<body style="text-align:center">
+<h1>打工人，你今天打工时间还剩</h1>
+<h2 id="hours"></h2>
+<h2 id="minutes"></h2>
+<h2 id="seconds"></h2>
+<h2 id="millis"></h2>
+</body>
+<script>
+    let interval = setInterval(function () {
+        let today = new Date();
+        let goHome = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 30, 0);
+        let hours = document.getElementById("hours");
+        let minutes = document.getElementById("minutes");
+        let seconds = document.getElementById("seconds");
+        let millis = document.getElementById("millis");
+        let between = parseInt(goHome - today);
+        hours.innerText = Math.floor((between / 1000 / 60) / 60) + "小时" + Math.floor((between / 1000 / 60) % 60) + "分钟" + ((between / 1000) % 60).toFixed(0) + "秒";
+        minutes.innerText = Math.floor(between / 1000 / 60) + "分钟" + ((between / 1000) % 60).toFixed(0) + "秒";
+        seconds.innerText = ((between) / 1000).toFixed(0) + "秒";
+        millis.innerText = between + "毫秒";
+        if (today >= goHome) {
+            clearInterval(interval);
+            hours.innerText = 0 + "小时" + 0 + "分钟" + "0" + "秒";
+            minutes.innerText = 0 + "分钟" + 0 + "秒";
+            seconds.innerText = 0 + "秒";
+            millis.innerText = 0 + "毫秒";
+            alert("你可以下班了");
+        }
+    }, 1)
+</script>
+</html>
